@@ -69,7 +69,7 @@
 
         .hero {
             text-align: center;
-            padding: 40px 20px
+            padding: 40px 20px;
         }
 
         .hero h1 {
@@ -97,22 +97,42 @@
             background: rgba(255, 255, 255, .5);
             border: 1px solid var(--border);
             border-radius: 24px;
-            padding: 30px
+            padding: 40px 30px;
+            margin-top: 40px
         }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px
+            gap: 50px
+        }
+
+        .contact h2 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* Clean Contact Links Style */
+        .contact p a {
+            color: var(--text);
+            text-decoration: none;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+
+        .contact p a:hover {
+            color: var(--accent);
         }
 
         input,
         textarea {
             width: 100%;
             padding: 12px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border: 1px solid var(--border);
-            border-radius: 10px
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
         }
 
         .submit {
@@ -121,7 +141,15 @@
             border: none;
             padding: 14px;
             border-radius: 10px;
-            width: 100%
+            width: 100%;
+            font-family: inherit;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .submit:hover {
+            background: #cc8480;
         }
 
         footer {
@@ -149,7 +177,8 @@
             }
 
             .grid {
-                grid-template-columns: 1fr
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
 
@@ -187,7 +216,7 @@
         .title_underline {
             top: 100;
             left: 50;
-            verticle-align: middle;
+            vertical-align: middle;
         }
 
         .top-left {
@@ -233,9 +262,55 @@
             text-align: center;
             font-size: 1.1rem;
         }
+
+        /* Dedicated Mobile Layout Adjustments */
+        @media screen and (max-width: 600px) {
+            .corner-floral {
+                width: 140px; /* Shrinks the background flowers on small screens */
+                opacity: 0.5;
+            }
+
+            .hero {
+                padding: 30px 15px 10px 15px;
+            }
+
+            .tag {
+                font-size: 1.2rem;
+            }
+
+            .contact {
+                margin: 20px 15px;
+                padding: 25px 20px;
+                border-radius: 16px;
+            }
+
+            .grid {
+                display: flex !important;
+                flex-direction: column-reverse !important; /* Reverses order: Form goes top, Get in Touch goes bottom */
+                gap: 40px;
+            }
+
+            .contact p {
+                margin: 15px 0;
+                font-size: 1.1rem;
+            }
+
+            .contact p a {
+                padding: 6px 0; /* Creates a larger touch target for thumbs */
+            }
+
+            .whatsapp-qr {
+                display: block;
+                margin: 20px auto 10px auto; /* Centers the QR code neatly */
+            }
+
+            .qr-caption {
+                text-align: center;
+                margin-top: 5px;
+            }
+        }
     </style>
 </head>
-
 
 <body>
     <img src="images/flower_top_left.png" class="corner-floral top-left">
@@ -256,14 +331,13 @@
                     <h2>Get in Touch</h2>
 
                     <p>
-                        <a href="https://wa.me/447359282745" target="_blank" rel="noopener noreferrer">
+                        <a href="https://wa.me" target="_blank" rel="noopener noreferrer">
                             📱 WhatsApp & Calls
                         </a>
                     </p>
 
                     <p>
-                        ☎ Telephone:
-                        07359 282745
+                        ☎ Telephone: 07359 282745
                     </p>
 
                     <p>
@@ -280,7 +354,7 @@
 
                 <div>
                     <h2>Send us a Message</h2>
-                    <form id="contact-form" action="https://formspree.io/f/mnjypdnb" method="POST">
+                    <form id="contact-form" action="https://formspree.io" method="POST">
 
                         <input type="text" name="name" placeholder="Your Name" required>
 
@@ -307,54 +381,37 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-
             const form = document.getElementById("contact-form");
             const status = document.getElementById("form-status");
 
             form.addEventListener("submit", async (e) => {
-
                 e.preventDefault();
-
                 const data = new FormData(form);
-
+                
                 try {
-
                     const response = await fetch(form.action, {
-                        method: "POST",
+                        method: form.method,
                         body: data,
-                        headers: {
-                            "Accept": "application/json"
-                        }
+                        headers: { 'Accept': 'application/json' }
                     });
-
+                    
                     if (response.ok) {
-
+                        status.textContent = "Thank you! Your message has been sent successfully. ♥";
+                        status.style.backgroundColor = "#eaf7ea"; 
+                        status.style.color = "#2e5c2e";
+                        status.style.borderColor = "#c6ecc6";
+                        status.style.display = "block";
                         form.reset();
-
-                        status.style.display = "block";
-                        status.innerHTML =
-                            "Thank you for your message. We'll be in touch soon.";
-
                     } else {
-
+                        status.textContent = "Oops! There was a problem submitting your form. Please try again.";
                         status.style.display = "block";
-                        status.innerHTML =
-                            "Sorry, there was a problem sending your message.";
-
                     }
-
-                } catch (err) {
-
+                } catch (error) {
+                    status.textContent = "Oops! There was a network problem submitting your form.";
                     status.style.display = "block";
-                    status.innerHTML =
-                        "Connection error. Please try again.";
-
                 }
-
             });
-
         });
     </script>
 </body>
-
 </html>
