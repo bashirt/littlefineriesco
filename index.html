@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Fineries Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#fef6ed; --primary:#593920; --accent:#d89591; --border:#e8d8c9; --text:#5c4a3d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:'Cormorant Garamond',serif;color:var(--text);overflow-x:hidden}
+.corner{position:fixed;width:280px;opacity:.35;pointer-events:none;z-index:0}
+.tl{top:0;left:0}.tr{top:0;right:0;transform:scaleX(-1)}
+.bl{bottom:0;left:0}.br{bottom:0;right:0;transform:scale(-1)}
+main{position:relative;z-index:2;padding:0px}
+.hero{text-align:center;padding:40px 20px}
+.hero h1{margin:0;color:#593920;font-size:clamp(3rem,7vw,6rem)}
+.hero h2{margin:0;color:var(--accent);font-family:'Allura',cursive;font-size:clamp(2rem,5vw,4rem)}
+.tag{font-size:1.5rem;max-width:700px;margin:10px auto}
+
+.contact{max-width:1100px;margin:50px auto;background:rgba(255,255,255,.5);border:1px solid var(--border);border-radius:24px;padding:30px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+input,textarea{width:100%;padding:12px;margin-bottom:10px;border:1px solid var(--border);border-radius:10px}
+.submit{background:var(--accent);color:white;border:none;padding:14px;border-radius:10px;width:100%}
+footer{text-align:center;padding:30px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);justify-content:center;align-items:center}
+.modal img{max-width:90%;max-height:90%}
+@media(max-width:1000px){.card{min-width:calc((100% - 20px)/2)}.grid{grid-template-columns:1fr}}
+@media(max-width:650px){.card{min-width:100%}.arrow{display:none}}
+
+body{
+    background:#fef6ed;
+    position:relative;
+    overflow-x:hidden;
+}
+.inline-center-img {
+    height: 1.2em;       /* Matches the image height to the text size */
+    vertical-align: middle; /* Centers the image vertically with the text line */
+}
+
+.corner-floral{
+    position:fixed;
+    width:280px;
+    opacity:0.85;
+    pointer-events:none;
+    z-index:0;
+}
+
+.title_underline{
+    top:100;
+	left:50;
+	verticle-align:middle;
+}
+.top-left{
+    top:0;
+    left:0;
+}
+
+.top-right{
+    top:0;
+    right:0;
+    transform:scaleX(-1);
+}
+
+.bottom-left{
+    bottom:0;
+    left:0;
+}
+
+.bottom-right{
+    bottom:0;
+    right:0;
+    transform:scaleX(-1);
+}
+.whatsapp-qr{
+    width:120px;
+    height:120px;
+    margin-top:20px;
+    border-radius:12px;
+    background:white;
+    padding:8px;
+    border:1px solid #e8d8c9;
+}
+
+</style>
+</head>
+<body>
+<img src="images/title_underline.png" class="tunderline title_underline">
+
+<img src="images/flower_top_left.png" class="corner-floral top-left">
+<img src="images/flower_top_right.png" class="corner-floral top-right">
+<img src="images/flower_bottom_left.png" class="corner-floral bottom-left">
+<img src="images/flower_bottom_right.png" class="corner-floral bottom-right">
+<main>
+<section class="hero">
+<h1>Little Fineries Co.</h1>
+<img src="title_underline.png" class="inline-center-img" alt="logo"><br>
+<h2>Handmade with Care</h2>
+<p class="tag">Personalised gifts, keepsakes & handcrafted creations</p>
+</section>
+<section class="contact">
+<div class="grid">
+<div>
+
+    <h2>Get in Touch</h2>
+
+    <p>
+<a
+    href="https://wa.me/447359282745"
+    target="_blank"
+    rel="noopener noreferrer">
+    📱 WhatsApp & Calls
+</a>		
+    </p>
+
+    <p>
+        ☎ Telephone:
+        07359 282745
+    </p>
+
+    <p>
+        ✉ contact@littlefineriesco.com
+    </p>
+
+    <img
+        src="images/whatsapp-qr.png"
+        alt="WhatsApp QR Code"
+        class="whatsapp-qr">
+
+    <p class="qr-caption">
+        Scan to chat on WhatsApp
+    </p>
+
+</div>
+
+<div>
+<h2>Send us a Message</h2>
+<form action="mailto:contact@littlefineriesco.com">
+<input placeholder="Your Name"><input placeholder="Your Email">
+<textarea rows="5" placeholder="Your Message / Request"></textarea>
+<button class="submit">Send Message ♥</button>
+</form></div></div></section>
+<footer>© 2026 Little Fineries Co. | Handmade with care.</footer>
+</main>
+<div class="modal" id="m"><img id="mi"></div>
+
+</body></html>
